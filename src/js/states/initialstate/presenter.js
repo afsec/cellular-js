@@ -16,16 +16,16 @@ const stateInitialStatePresenter = () => {
         document.getElementById('result').textContent = e.data;
     }, false)
 
-    waitForElement({ "selector": "button#say-hi" }, () => {
-        document.querySelector("button#say-hi").addEventListener('click', () => {
-            worker.postMessage({ "cmd": "hi", "msg": "Hi!" })
+    waitForElement({ "selector": "button#create-one" }, () => {
+        document.querySelector("button#create-one").addEventListener('click', () => {
+            worker.postMessage({ "cmd": "createOne", "msg": "Hi!" })
         })
     })
 
-    waitForElement({ "selector": "button#stop" }, () => {
-        document.querySelector("button#stop").addEventListener('click', () => {
+    waitForElement({ "selector": "button#read-all" }, () => {
+        document.querySelector("button#read-all").addEventListener('click', () => {
             // worker.terminate() from this script would also stop the worker.
-            worker.postMessage({ "cmd": "stop", "msg": "Bye" })
+            worker.postMessage({ "cmd": "readAll", "msg": "Bye" })
         })
     })
 

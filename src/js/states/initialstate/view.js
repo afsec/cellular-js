@@ -6,9 +6,9 @@ const stateInitialStateView = (obj) => {
             <span>${JSON.stringify(obj)}</span>
         </div>
         <div id="worker-panel">
-            <button id="say-hi">Say HI</button>
+            <button id="create-one">Create One</button>
             <button id="unknown-cmd">Send unknown command</button>
-            <button id="stop">Stop worker</button>
+            <button id="read-all">Read All</button>
             <hr/>
             <output id="result"></output>
         </div>
