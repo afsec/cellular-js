@@ -3,29 +3,26 @@ PROGNAME=$0
 
 BUILD=$(date +%s)
 
+SRC_DIR="./src"
 TMP_DIR="./tmp"
+DIST_DIR="./dist"
+PROD_DIR="$PWD/prod"
+
+DIST_FRONT_DIR="${DIST_DIR}/htdocs/pages"
+DIST_JS_DIR="${DIST_FRONT_DIR}/js"
+DIST_ACTOR_DIR="${DIST_JS_DIR}/workers"
+
 
 DEBUG_FILE="${TMP_DIR}/main-compiler.js"
-
-
 TO_DOT_FILE="${TMP_DIR}/main-debug.js"
 
 LANG_OUT="STABLE"
-
 #LANG_OUT="ECMASCRIPT_2018"
 
 COMPILER="$HOME/bin/closure-compiler.jar"
 
-DIST_DIR="./dist"
-
-DIST_FRONT_DIR="${DIST_DIR}/htdocs/pages"
-
-SRC_DIR="./src"
-
 LOGINJS_FILE="${SRC_DIR}/public_htdocs/login.js"
 
-#PROD_DIR="$PWD/../${DIST_FRONT_DIR}/"
-PROD_DIR="$PWD/prod"
 
 [ X"$1" == X"-p" ] && DEBUG="FALSE" || DEBUG="TRUE"
 
@@ -44,6 +41,10 @@ clean_dist() {
     mkdir -p ${DIST_FRONT_DIR}
     rm -rf ${TMP_DIR}
     mkdir -p ${TMP_DIR}
+
+    mkdir -p ${DIST_ACTOR_DIR}
+    mkdir -p ${DIST_JS_DIR}
+
 }
 
 merge_code() {
@@ -82,13 +83,50 @@ merge_code() {
         printf "\n" >>${DEBUG_FILE}
         awk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $state_file >>${DEBUG_FILE}
     done
+    # cat ${SRC_DIR}/js/main.js >>${DEBUG_FILE}
+    printf "\n" >>${DEBUG_FILE}
+
+    # Actors merging
+
+    for path_file in $(find ${SRC_DIR}/js/actors/ -name "actor.js" | sort); do
+        actor_dir=$(echo $path_file | sed "s/\/actor.js$//g")
+        actor_name=$(echo $actor_dir | sed "s/.*\///g")
+        actor_file=$path_file
+        actor_dst_file=${DIST_ACTOR_DIR}/${actor_name}.js
+        presenter_file="$actor_dir/presenter.js"
+        model_file="$actor_dir/model.js"
+        view_file="$actor_dir/view.js"
+
+        # echo "actor_dir ${actor_dir}"
+        # echo "actor_name ${actor_name}"
+        # echo "actor_file ${actor_file}"
+        # echo "actor_dst_file ${actor_dst_file}"
+        # echo "presenter_file ${presenter_file}"
+        # echo "model_file ${model_file}"
+        # echo "view_file ${view_file}"
+        # echo "PWD ${PWD}"
+        # echo "DIST_DIR"
+        # tree ${DIST_DIR}
+        # echo "PAUSED"
+        # read
+
+        head -n 1 $actor_file >>${actor_dst_file}
+        printf "\n" >>${actor_dst_file}
+        cat $presenter_file >>${actor_dst_file}
+        printf "\n" >>${actor_dst_file}
+        cat $model_file >>${actor_dst_file}
+        printf "\n" >>${actor_dst_file}
+        cat $view_file >>${actor_dst_file}
+        printf "\n" >>${actor_dst_file}
+        awk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $actor_file >>${actor_dst_file}
+    done
     cat ${SRC_DIR}/js/main.js >>${DEBUG_FILE}
     printf "\n" >>${DEBUG_FILE}
 }
 
 merge_to_dot() {
     printf "\tRunning $FUNCNAME...\n"
-    for arquivo in $(find ${SRC_DIR} -name "*.js" | grep -v "main.js" | grep -v "extlibs" | sort); do
+    for arquivo in $(find ${SRC_DIR} -name "*.js" | grep -v "actors" | grep -v "main.js" | grep -v "extlibs" | sort); do
         file_name=$(echo ${arquivo} | sed "s/^.*\///g")
         if [ X"${file_name}" == X"config.js" -a X"${DEBUG}" == X"FALSE" ]; then
             cat ${arquivo} | sed 's/const DEBUG = true/const DEBUG = false/g' >>${TO_DOT_FILE}
@@ -97,7 +135,6 @@ merge_to_dot() {
             cat ${arquivo} >>${TO_DOT_FILE}
             printf "\n" >>${TO_DOT_FILE}
         fi
-
     done
     cat ${SRC_DIR}/js/main.js >>${TO_DOT_FILE}
 }
@@ -120,9 +157,10 @@ fix_index() {
 
 copy_assets() {
     printf "\tRunning $FUNCNAME...\n"
+    # mkdir -p ${DIST_FRONT_DIR}/font
     mkdir -p ${DIST_FRONT_DIR}/css
-    mkdir -p ${DIST_FRONT_DIR}/js
-    mkdir -p ${DIST_FRONT_DIR}/font
+    mkdir -p ${DIST_JS_DIR}
+    mkdir -p ${DIST_ACTOR_DIR}
 
     #mkdir ${DIST_FRONT_DIR}/webfonts
     #mkdir ${DIST_FRONT_DIR}/extlibs
@@ -139,6 +177,7 @@ copy_assets() {
     #cp ${SRC_DIR}/extlibs/* $DIST_FRONT_DIR/extlibs
     #cp ${SRC_DIR}/assets/img/* $DIST_FRONT_DIR/assets/img/
 
+    cp -v ${SRC_DIR}/favicon.ico $DIST_FRONT_DIR/favicon.ico
     cp -v ${SRC_DIR}/css/uikit.min.css $DIST_FRONT_DIR/css/
     cp -v ${SRC_DIR}/css/style.css $DIST_FRONT_DIR/css/style.${BUILD}.css
 
@@ -158,7 +197,6 @@ generate_callgraph() {
     printf "\tRunning $FUNCNAME...\n"
     ./generate_callgraph.awk ${TO_DOT_FILE} >>${TMP_DIR}/callgraph.dot
     dot ${TMP_DIR}/callgraph.dot -Tsvg -o ${TMP_DIR}/callgraph.svg
-
 }
 
 run_server() {
@@ -168,7 +206,6 @@ run_server() {
 }
 
 main() {
-
     clean_dist
     merge_code
     compile

@@ -5,15 +5,23 @@ const waitForElement = (props, callBack) => {
     debug('waitForElement()')
     debug(props)
     const maxTries = 50
-    const selector = props.selector
-    const time = props.time
+    const selector = props["selector"]
+    var timeOut = null
     var tries = null
+
+    if (typeof (props["timeOut"]) === 'undefined') {
+        // Default timeOut: 100 miliseconds
+        timeOut = 100
+    } else {
+        timeOut = props["timeOut"]
+    }
+
     if (typeof (callBack) === 'undefined') {
         debug(`WFE: ERROR -> Undefined Callback function`)
         return false
     } else {
-        if (typeof (props.tries) !== 'undefined') {
-            tries = props.tries
+        if (typeof (props["tries"]) !== 'undefined') {
+            tries = props["tries"]
         } else {
             tries = 0
             debug('WFE: ERROR -> undefined tries')
@@ -28,8 +36,8 @@ const waitForElement = (props, callBack) => {
             if (tries < maxTries) {
                 debug(`WFE:                  try(#${tries}) waiting for: ${selector}`)
                 setTimeout(() => {
-                    waitForElement({ selector: selector, time: time, tries: tries }, callBack)
-                }, time);
+                    waitForElement({ "selector": `${selector}`, "timeOut": timeOut, "tries": tries }, callBack)
+                }, timeOut);
             } else {
                 debug(`WFE: ERROR -> Exausted tries(${tries})!: ${selector}`)
                 return false
