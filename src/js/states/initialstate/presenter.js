@@ -9,30 +9,21 @@ const stateInitialStatePresenter = () => {
         document.querySelector("div#app").innerHTML = view
     })
 
-    // Creating Worker and add events listeners
-    var worker = new Worker('/js/workers/dadosteste.js')
-
-    worker.addEventListener('message', function (e) {
-        document.getElementById('result').textContent = e.data;
-    }, false)
-
     waitForElement({ "selector": "button#create-one" }, () => {
         document.querySelector("button#create-one").addEventListener('click', () => {
-            worker.postMessage({ "cmd": "createOne", "msg": "Hi!" })
+           debug('create-one')
         })
     })
 
     waitForElement({ "selector": "button#read-all" }, () => {
         document.querySelector("button#read-all").addEventListener('click', () => {
-            // worker.terminate() from this script would also stop the worker.
-            worker.postMessage({ "cmd": "readAll", "msg": "Bye" })
+            debug('read-all')
         })
     })
 
     waitForElement({ "selector": "button#unknown-cmd" }, () => {
         document.querySelector("button#unknown-cmd").addEventListener('click', () => {
-            // worker.terminate() from this script would also stop the worker.
-            worker.postMessage({ "cmd": "foobard", "msg": "???" })
+            debug('unknown-cmd')
         })
     })
 

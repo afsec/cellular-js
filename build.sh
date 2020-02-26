@@ -10,7 +10,6 @@ PROD_DIR="$PWD/prod"
 
 DIST_FRONT_DIR="${DIST_DIR}/htdocs/pages"
 DIST_JS_DIR="${DIST_FRONT_DIR}/js"
-DIST_ACTOR_DIR="${DIST_JS_DIR}/workers"
 
 
 DEBUG_FILE="${TMP_DIR}/main-compiler.js"
@@ -41,8 +40,6 @@ clean_dist() {
     mkdir -p ${DIST_FRONT_DIR}
     rm -rf ${TMP_DIR}
     mkdir -p ${TMP_DIR}
-
-    mkdir -p ${DIST_ACTOR_DIR}
     mkdir -p ${DIST_JS_DIR}
 
 }
@@ -83,50 +80,13 @@ merge_code() {
         printf "\n" >>${DEBUG_FILE}
         awk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $state_file >>${DEBUG_FILE}
     done
-    # cat ${SRC_DIR}/js/main.js >>${DEBUG_FILE}
-    printf "\n" >>${DEBUG_FILE}
-
-    # Actors merging
-
-    for path_file in $(find ${SRC_DIR}/js/actors/ -name "actor.js" | sort); do
-        actor_dir=$(echo $path_file | sed "s/\/actor.js$//g")
-        actor_name=$(echo $actor_dir | sed "s/.*\///g")
-        actor_file=$path_file
-        actor_dst_file=${DIST_ACTOR_DIR}/${actor_name}.js
-        presenter_file="$actor_dir/presenter.js"
-        model_file="$actor_dir/model.js"
-        view_file="$actor_dir/view.js"
-
-        # echo "actor_dir ${actor_dir}"
-        # echo "actor_name ${actor_name}"
-        # echo "actor_file ${actor_file}"
-        # echo "actor_dst_file ${actor_dst_file}"
-        # echo "presenter_file ${presenter_file}"
-        # echo "model_file ${model_file}"
-        # echo "view_file ${view_file}"
-        # echo "PWD ${PWD}"
-        # echo "DIST_DIR"
-        # tree ${DIST_DIR}
-        # echo "PAUSED"
-        # read
-
-        head -n 1 $actor_file >>${actor_dst_file}
-        printf "\n" >>${actor_dst_file}
-        cat $presenter_file >>${actor_dst_file}
-        printf "\n" >>${actor_dst_file}
-        cat $model_file >>${actor_dst_file}
-        printf "\n" >>${actor_dst_file}
-        cat $view_file >>${actor_dst_file}
-        printf "\n" >>${actor_dst_file}
-        awk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $actor_file >>${actor_dst_file}
-    done
     cat ${SRC_DIR}/js/main.js >>${DEBUG_FILE}
     printf "\n" >>${DEBUG_FILE}
 }
 
 merge_to_dot() {
     printf "\tRunning $FUNCNAME...\n"
-    for arquivo in $(find ${SRC_DIR} -name "*.js" | grep -v "actors" | grep -v "main.js" | grep -v "extlibs" | sort); do
+    for arquivo in $(find ${SRC_DIR} -name "*.js" | grep -v "main.js" | grep -v "extlibs" | sort); do
         file_name=$(echo ${arquivo} | sed "s/^.*\///g")
         if [ X"${file_name}" == X"config.js" -a X"${DEBUG}" == X"FALSE" ]; then
             cat ${arquivo} | sed 's/const DEBUG = true/const DEBUG = false/g' >>${TO_DOT_FILE}
@@ -160,7 +120,6 @@ copy_assets() {
     # mkdir -p ${DIST_FRONT_DIR}/font
     mkdir -p ${DIST_FRONT_DIR}/css
     mkdir -p ${DIST_JS_DIR}
-    mkdir -p ${DIST_ACTOR_DIR}
 
     #mkdir ${DIST_FRONT_DIR}/webfonts
     #mkdir ${DIST_FRONT_DIR}/extlibs
