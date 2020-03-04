@@ -45,7 +45,7 @@ cd cellular-js
 
 ```
 
-### Create the required first state (InitialState) and move to `./src/js/states/` folder.
+### Create the required (InitialState) and move to `./src/js/states/` folder.
 
 ```
 ./new-state.sh InitialState
@@ -63,10 +63,9 @@ mv -v initialstate ./src/js/states/
 
 #### Callgraph (image)
 ```
-xdg-open xdg-open ./tmp/callgraph.svg
+xdg-open ./tmp/callgraph.svg
 ```
 ![Basic Callgraph](/docs/06-basic-callgraph.png?raw=true)
-
 
 
 #### Tree view
@@ -79,6 +78,52 @@ xdg-open xdg-open ./tmp/callgraph.svg
 └── main-debug.js (Javascript merged to generate callgraph)
 
 ```
+
+
+---
+
+### Create your first state (Cell)
+
+
+```
+./new-state.sh ShowPage
+mv -v showpage ./src/js/states/
+./build.sh
+
+```
+CAUTION: Don't use the `state` in you state name.
+
+
+### Call your state from InitialState
+`vi ./src/js/states/initialstate/presenter.js`
+
+#### Before
+```js
+const stateInitialStatePresenter = () => {
+    debug(`stateInitialStatePresenter()`)
+    const model = stateInitialStateModel()
+    const view = stateInitialStateView(model)
+    // AddEvenListener, innerHTML or Call Another State.
+}
+
+```
+
+
+#### After
+```js
+const stateInitialStatePresenter = () => {
+    debug(`stateInitialStatePresenter()`)
+    const model = stateInitialStateModel()
+    const view = stateInitialStateView(model)
+    // AddEvenListener, innerHTML or Call Another State.
+    stateShowPage()
+}
+
+```
+
+#### Check your project (http://localhost:8000) with `Developer Tools` again
+
+![Browser with Developer Tools 1s state](/docs/07-first-state.png?raw=true)
 
 
 ## Workflows
