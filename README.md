@@ -3,6 +3,7 @@
 
 A Javascript [micro-frontend](https://micro-frontends.org/) framework with States oriented MVP - Model View Presenter) implementation.
 
+![Micro Frontend](https://micro-frontends.org/ressources/screen/three-teams.png)
 
 ## Cons
 
@@ -13,7 +14,7 @@ A Javascript [micro-frontend](https://micro-frontends.org/) framework with State
 
 ## Pro
 - Work beautifully with micro-frontends
-- Now you can have a live Debug on a TV, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
+- Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
 - Powered by `Google Closure Compiler`
 - No `npm`,`yarn`, etc.
 - No `nodejs` blackhole.
