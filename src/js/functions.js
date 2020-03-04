@@ -17,7 +17,7 @@ const waitForElement = (props, callBack) => {
     }
 
     if (typeof (callBack) === 'undefined') {
-        debug(`WFE: ERROR -> Undefined Callback function`)
+        console.error(`WFE: ERROR -> Undefined Callback function`)
         return false
     } else {
         if (typeof (props["tries"]) !== 'undefined') {
@@ -39,7 +39,7 @@ const waitForElement = (props, callBack) => {
                     waitForElement({ "selector": `${selector}`, "timeOut": timeOut, "tries": tries }, callBack)
                 }, timeOut);
             } else {
-                debug(`WFE: ERROR -> Exausted tries(${tries})!: ${selector}`)
+                console.error(`WFE: ERROR -> Exausted tries(${tries})!: ${selector}`)
                 return false
             }
         }

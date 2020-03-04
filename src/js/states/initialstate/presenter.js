@@ -15,7 +15,7 @@ const stateInitialStatePresenter = () => {
         })
     })
 
-    waitForElement({ "selector": "button#read-all" }, () => {
+    waitForElement({ "selector": "button#read-all1" }, () => {
         document.querySelector("button#read-all").addEventListener('click', () => {
             debug('read-all')
         })
