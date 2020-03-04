@@ -136,9 +136,6 @@ xdg-open ./tmp/callgraph.svg
 ![Basic Callgraph](/docs/08-first-state-callgraph.png?raw=true)
 
 
-
-### Repeat (1, 2, 3, 4)
-
 ### Deploy
 
 **Distribution folder:** `./dist/htdocs/pages/`
