@@ -131,7 +131,7 @@ xdg-open ./tmp/callgraph.svg
 ![Basic Callgraph](/docs/08-first-state-callgraph.png?raw=true)
 
 
-### How to generate Production Artifact Tree
+### How to generate Production artifacts tree
 
 Use `./build.sh -p` for **production code* generation (no debug messages).
 
