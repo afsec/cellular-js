@@ -21,7 +21,7 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 ![NPM blackhole](https://img.devrant.com/devrant/rant/r_760537_vKvzh.jpg)
 - *Low learning curve*.
 - *Beginners are doing well*.
-- Agile prototype for experienced developers.
+- Agile prototyping for experienced developers.
 - A state can't be broken by another state execution. So, that means no segmentation faults. But, be cautious about usage footprint: CPU, Memory and DOM reentrance.
 
 
