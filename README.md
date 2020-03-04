@@ -28,6 +28,8 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 
 2. Graphviz (dot language) - `sudo apt-get install graphviz`
 
+3. Python 3
+
 
 ## How to use
 
@@ -43,10 +45,17 @@ cd cellular-js
 ### Create the required first state (InitialState) and move to `./src/js/states/` folder.
 
 ```
-./new-state.sh initialState
+./new-state.sh InitialState
 mv -v initialstate ./src/js/states/
+./build.sh
 
 ```
+
+### Open your browser with `Developer Tools`
+
+
+### Check You callgraph
+
 
 ## Workflows
 
