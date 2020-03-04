@@ -1,5 +1,5 @@
 #!/bin/bash
-DOC_DIR="./doc"
+DOC_DIR="./tmp"
 FUNC_MAP="${DOC_DIR}/func_map.md"
 
 # * CLEAN OLD FILE
