@@ -126,6 +126,13 @@ const stateInitialStatePresenter = () => {
 ![Browser with Developer Tools 1s state](/docs/07-first-state.png?raw=true)
 
 
+#### Check your Callgraph (image) again
+```
+xdg-open ./tmp/callgraph.svg
+```
+![Basic Callgraph](/docs/08-first-state-callgraph.png?raw=true)
+
+
 ## Workflows
 
 ![MVP Basic Rules](/docs/01-mvp-basic-roles.png?raw=true)
