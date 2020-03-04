@@ -1,7 +1,7 @@
 # Cellular JS
 
 
-A Javascript [micro-frontend](https://micro-frontends.org/) framework with States oriented MVP - Model View Presenter) implementation.
+A Javascript [micro-frontends](https://micro-frontends.org/) framework with States oriented MVP - Model View Presenter) implementation.
 
 ![Micro Frontend](https://micro-frontends.org/ressources/screen/three-teams.png)
 
@@ -115,7 +115,7 @@ xdg-open xdg-open ./tmp/callgraph.svg
 
 
 ## Thanks to
-
+- Micro Frontends Model (@naltatis)
 - Elm lang (State Communication inspiration)
 - Actor Model
 - Kevlin Henney Talks
