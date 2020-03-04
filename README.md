@@ -9,7 +9,7 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 
 - A lot...
 - More documentation needed (You're welcome)
-- There is no type-system (yet, maybe some day, did I hear "patreon"..?)
+- There is no type-system (yet, maybe some day)
 
 
 ## Pro
