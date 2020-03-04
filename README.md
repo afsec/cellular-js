@@ -3,6 +3,27 @@
 
 A Javascript frontend framework with States oriented MVP - Model View Presenter) implementation.
 
+
+## Cons
+
+- A lot...
+- More documentation needed (You're welcome)
+- There is no type-system (yet, maybe some day, did I hear "patreon"..?)
+
+
+## Pro
+
+- Powered by `Google Closure Compiler`
+- No `npm`,`yarn`, etc.
+- No `nodejs` blackhole.
+![NPM blackhole](https://img.devrant.com/devrant/rant/r_760537_vKvzh.jpg)
+- *Low learning curve*.
+- *Beginners are doing well*.
+- Agile prototype for experienced developers.
+
+
+## Workflows
+
 ![MVP Basic Rules](/docs/01-mvp-basic-roles.png?raw=true)
 
 ---
@@ -19,24 +40,6 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 
 ---
 
-
-## Contra
-
-- A lot...
-
-- More documentation needed (You're welcome)
-
-- There is no type-system (yet, maybe some day, did I hear "patreon"..?)
-
-
-## Pro
-
-- No NPM,yard,Grunt, etc.
-- No Nodejs blackhole.
-![NPM blackhole](https://img.devrant.com/devrant/rant/r_760537_vKvzh.jpg)
-- Low learning curve.
-- Beginners are doing well.
-- Agile prototype for experienced developers.
 
 
 
