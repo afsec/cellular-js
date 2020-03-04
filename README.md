@@ -53,7 +53,7 @@ mv -v initialstate ./src/js/states/
 
 ### Check your project (http://localhost:8000) with `Developer Tools`
 
-![Browser with Developer Tools](/docs/06-basic-callgraph.png?raw=true)
+![Browser with Developer Tools](/docs/05-browser-developer-tools.png?raw=true)
 
 
 ### Check Your Debug artifacts at  `./tmp/` folder
@@ -62,7 +62,8 @@ mv -v initialstate ./src/js/states/
 ```
 xdg-open xdg-open ./tmp/callgraph.svg
 ```
-![Basic Callgraph](/docs/05-browser-developer-tools.png?raw=true)
+![Basic Callgraph](/docs/06-basic-callgraph.png?raw=true)
+
 
 
 #### Tree view
