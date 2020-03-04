@@ -42,7 +42,6 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 ```
 git clone --depth=1 https://github.com/afsec/cellular-js
 cd cellular-js
-
 ```
 
 ### Create the required (InitialState) and move to `./src/js/states/` folder.
@@ -51,7 +50,6 @@ cd cellular-js
 ./new-state.sh InitialState
 mv -v initialstate ./src/js/states/
 ./build.sh
-
 ```
 
 ### Check your project (http://localhost:8000) with `Developer Tools`
@@ -65,6 +63,7 @@ mv -v initialstate ./src/js/states/
 ```
 xdg-open ./tmp/callgraph.svg
 ```
+
 ![Basic Callgraph](/docs/06-basic-callgraph.png?raw=true)
 
 
@@ -76,7 +75,6 @@ xdg-open ./tmp/callgraph.svg
 ├── main-compiled.js (Artifact)
 ├── main-compiler.js (Javascript merged to generate callgraph to be compiled)
 └── main-debug.js (Javascript merged to generate callgraph)
-
 ```
 
 
@@ -91,7 +89,6 @@ xdg-open ./tmp/callgraph.svg
 ./new-state.sh ShowPage
 mv -v showpage ./src/js/states/
 ./build.sh
-
 ```
 CAUTION: Don't use the `state` in you state name.
 
@@ -108,7 +105,6 @@ const stateInitialStatePresenter = () => {
     const view = stateInitialStateView(model)
     // AddEvenListener, innerHTML or Call Another State.
 }
-
 ```
 
 
@@ -121,7 +117,6 @@ const stateInitialStatePresenter = () => {
     // AddEvenListener, innerHTML or Call Another State.
     stateShowPage()
 }
-
 ```
 
 #### 3. Check your project (http://localhost:8000) with `Developer Tools` again
@@ -154,7 +149,6 @@ xdg-open ./tmp/callgraph.svg
     └── uikit.min.js
 
 2 directories, 7 files
-
 ```
 
 
