@@ -20,6 +20,7 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 - *Low learning curve*.
 - *Beginners are doing well*.
 - Agile prototype for experienced developers.
+- A state can't be broken by another state execution. So, that means no segmentation faults. But, be cautious about usage footprint: CPU, Memory and DOM reentrance.
 
 
 ## Dependencies
@@ -102,8 +103,21 @@ xdg-open xdg-open ./tmp/callgraph.svg
 
 ## TODO
 
-- [ ] An useful CRUD Example
+- [ ] Make an useful CRUD Example
+
+- [ ] Make a tutorial to show you some Proof of Concept about  UI focused State Oriented Programming, or simply "Cell within MVP"
 
 - [ ] More documentation
 
 - [ ] Merge script into one executable (maybe Rust)
+
+
+## Thanks to
+
+- Elm lang (State Communication inspiration)
+- Actor Model
+- Kevlin Henney Talks
+- Joe Armstrong Talks
+- Uncle Bob Talks
+- Closure Compiler
+- WIP
