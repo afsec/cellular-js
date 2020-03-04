@@ -22,6 +22,32 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 - Agile prototype for experienced developers.
 
 
+## Dependencies
+
+1. Google Closure Compiler (`$HOME/bin/closure-compiler.jar`)
+
+2. Graphviz (dot language) - `sudo apt-get install graphviz`
+
+
+## How to use
+
+### Install dependencies first.
+
+### Create your workspace
+```
+git clone --depth=1 https://github.com/afsec/cellular-js
+cd cellular-js
+
+```
+
+### Create the required first state (InitialState) and move to `./src/js/states/` folder.
+
+```
+./new-state.sh initialState
+mv -v initialstate ./src/js/states/
+
+```
+
 ## Workflows
 
 ![MVP Basic Rules](/docs/01-mvp-basic-roles.png?raw=true)
@@ -39,6 +65,7 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 ![MVP State Data Travel Rules](/docs/04-state-data-travel.png?raw=true)
 
 ---
+
 
 
 
