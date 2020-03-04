@@ -82,7 +82,9 @@ xdg-open ./tmp/callgraph.svg
 
 ---
 
-### Create your first state (Cell)
+## Create your own project
+
+### 1. Make your first state (Cell)
 
 
 ```
@@ -94,7 +96,8 @@ mv -v showpage ./src/js/states/
 CAUTION: Don't use the `state` in you state name.
 
 
-### Call your state from InitialState
+### 2. Call your current state(ShowPage) from previous state(InitialState)
+
 `vi ./src/js/states/initialstate/presenter.js`
 
 #### Before
@@ -121,16 +124,41 @@ const stateInitialStatePresenter = () => {
 
 ```
 
-#### Check your project (http://localhost:8000) with `Developer Tools` again
+#### 3. Check your project (http://localhost:8000) with `Developer Tools` again
 
 ![Browser with Developer Tools 1s state](/docs/07-first-state.png?raw=true)
 
 
-#### Check your Callgraph (image) again
+#### 4. Check your Callgraph (image) again
 ```
 xdg-open ./tmp/callgraph.svg
 ```
 ![Basic Callgraph](/docs/08-first-state-callgraph.png?raw=true)
+
+
+
+### Repeat (1, 2, 3, 4)
+
+### Deploy
+
+**Distribution folder:** `./dist/htdocs/pages/`
+
+`tree  ./dist/htdocs/pages/`
+```
+./dist/htdocs/pages/
+├── css
+│   ├── style.1583309824.css
+│   └── uikit.min.css
+├── favicon.ico
+├── index.html
+└── js
+    ├── main.1583309824.js
+    ├── uikit-icons.min.js
+    └── uikit.min.js
+
+2 directories, 7 files
+
+```
 
 
 ## Workflows
