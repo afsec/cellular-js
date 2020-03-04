@@ -1,7 +1,7 @@
 # Cellular JS
 
 
-A Javascript frontend framework with States oriented MVP - Model View Presenter) implementation.
+A Javascript [micro-frontend](https://micro-frontends.org/) framework with States oriented MVP - Model View Presenter) implementation.
 
 
 ## Cons
@@ -12,7 +12,8 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 
 
 ## Pro
-
+- Work beautifully with micro-frontends
+- Now you can have a live Debug on a TV, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
 - Powered by `Google Closure Compiler`
 - No `npm`,`yarn`, etc.
 - No `nodejs` blackhole.
