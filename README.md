@@ -107,7 +107,7 @@ xdg-open xdg-open ./tmp/callgraph.svg
 
 - [ ] Make an useful CRUD Example
 
-- [ ] Make a tutorial to show you some Proof of Concept about  UI focused State Oriented Programming, or simply "Cell within MVP"
+- [ ] Make a tutorial to show you some Proof of Concept about *UI focused State Oriented Programming*, or simply "Cell (MVP powered)"
 
 - [ ] More documentation
 
