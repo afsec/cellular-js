@@ -115,11 +115,10 @@ xdg-open xdg-open ./tmp/callgraph.svg
 
 
 ## Thanks to
-- Micro Frontends Model (@naltatis)
+- Michael Geers(@naltatis) Micro Frontends (https://micro-frontends.org/)
 - Elm lang (State Communication inspiration)
 - Actor Model
-- Kevlin Henney Talks
-- Joe Armstrong Talks
-- Uncle Bob Talks
-- Closure Compiler
-- WIP
+- Kevlin Henney talks
+- Joe Armstrong talks
+- Robert "Uncle Bob" Martin talks
+- Google Closure Compiler
