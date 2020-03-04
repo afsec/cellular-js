@@ -28,7 +28,7 @@ A Javascript frontend framework with States oriented MVP - Model View Presenter)
 
 2. Graphviz (dot language) - `sudo apt-get install graphviz`
 
-3. Python 3
+3. Python 3 (for local HTTP Server)
 
 
 ## How to use
@@ -51,10 +51,30 @@ mv -v initialstate ./src/js/states/
 
 ```
 
-### Open your browser with `Developer Tools`
+### Check your project (http://localhost:8000) with `Developer Tools`
+
+![Browser with Developer Tools](/docs/06-basic-callgraph.png?raw=true)
 
 
-### Check You callgraph
+### Check Your Debug artifacts at  `./tmp/` folder
+
+#### Callgraph (image)
+```
+xdg-open xdg-open ./tmp/callgraph.svg
+```
+![Basic Callgraph](/docs/05-browser-developer-tools.png?raw=true)
+
+
+#### Tree view
+```
+./tmp/
+├── callgraph.dot (Callgraph source code)
+├── callgraph.svg (Callgraph image)
+├── main-compiled.js (Artifact)
+├── main-compiler.js (Javascript merged to generate callgraph to be compiled)
+└── main-debug.js (Javascript merged to generate callgraph)
+
+```
 
 
 ## Workflows
