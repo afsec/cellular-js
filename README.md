@@ -17,7 +17,7 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 - Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
 - Powered by `Google Closure Compiler`
 - No `npm`,`yarn`, etc.
-- No `nodejs` blackhole.
+- No `node_modules` blackhole.
 ![NPM blackhole](https://img.devrant.com/devrant/rant/r_760537_vKvzh.jpg)
 - *Low learning curve*.
 - *Beginners are doing well*.
