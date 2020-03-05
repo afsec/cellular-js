@@ -82,7 +82,7 @@ xdg-open ./tmp/callgraph.svg
 
 ## Create your own project
 
-### 1. Make your first state (Cell)
+### 1. Make your first state (`ShowPage`)
 
 
 ```
@@ -183,7 +183,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 - [ ] Make an useful CRUD Example
 
-- [ ] Make a tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"Cell (MVP powered)"*
+- [ ] Make a tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
 
 - [ ] More documentation
 
