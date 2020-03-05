@@ -9,7 +9,7 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 
 - A lot...
 - More documentation needed (You're welcome)
-- There is no type-system (yet, maybe some day)
+- There is no type-system (Yet. Maybe some day.)
 
 
 ## Pro
@@ -133,7 +133,7 @@ xdg-open ./tmp/callgraph.svg
 
 ### How to generate Production artifacts tree
 
-Use `./build.sh -p` for **production code* generation (no debug messages).
+Use `./build.sh -p` for **production code** generation (no debug messages).
 
 
 ### Deploy
