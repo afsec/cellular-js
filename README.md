@@ -39,14 +39,14 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework with Stat
 ### Install dependencies first.
 
 ### Create your workspace
-```
+```sh
 git clone --depth=1 https://github.com/afsec/cellular-js
 cd cellular-js
 ```
 
 ### Create the required (InitialState) and move to `./src/js/states/` folder.
 
-```
+```sh
 ./new-state.sh InitialState
 mv -v initialstate ./src/js/states/
 ./build.sh
@@ -60,7 +60,7 @@ mv -v initialstate ./src/js/states/
 ### Check Your Debug artifacts at  `./tmp/` folder
 
 #### Callgraph (image)
-```
+```sh
 xdg-open ./tmp/callgraph.svg
 ```
 
@@ -85,7 +85,7 @@ xdg-open ./tmp/callgraph.svg
 ### 1. Make your first state (`ShowPage`)
 
 
-```
+```sh
 ./new-state.sh ShowPage
 mv -v showpage ./src/js/states/
 ./build.sh
@@ -192,7 +192,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ## Thanks to
 - Michael Geers(@naltatis) Micro Frontends (https://micro-frontends.org/)
-- Elm lang (State Communication inspiration)
+- Elm lang (Inter-State Communication inspiration)
 - Actor Model
 - Kevlin Henney talks
 - Joe Armstrong talks
