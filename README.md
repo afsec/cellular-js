@@ -192,7 +192,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ## Thanks to
 - Michael Geers(@naltatis) Micro Frontends (https://micro-frontends.org/)
-- Elm lang (Inter-State Communication inspiration)
+- Elm lang (Inspiration for Inter-State Communication)
 - Actor Model
 - Kevlin Henney talks
 - Joe Armstrong talks
