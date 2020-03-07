@@ -34,7 +34,7 @@ A Javascript [micro-frontends](https://micro-frontends.org/) framework implement
 3. Python 3 (for local HTTP Server)
 
 
-## How to use
+## Getting Started
 
 ### Install dependencies first.
 
