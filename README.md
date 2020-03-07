@@ -175,17 +175,21 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ---
 
+## Example App
 
+https://github.com/afsec/cellular-js-example-app
 
 
 
 ## TODO
 
-- [ ] Make an useful CRUD Example
+- [X] Make an useful CRUD Example
+
+- [ ] More documentation
 
 - [ ] Make a tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
 
-- [ ] More documentation
+
 
 - [ ] Merge script into one executable (maybe Rust)
 
