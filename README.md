@@ -1,7 +1,7 @@
 # Cellular JS
 
 
-A Javascript framework implementation of "UI Focused State Oriented Programming" grounded by MVP (Model View Presenter), which supports [micro-frontends](https://micro-frontends.org/).
+A Javascript framework implementation of **UI Focused State Oriented Programming** grounded by MVP (Model View Presenter), which supports [micro-frontends](https://micro-frontends.org/).
 
 ![Single Page App states](/docs/00-states-example.png?raw=true)
 
@@ -192,7 +192,7 @@ https://github.com/afsec/cellular-js-example-app
 
 - [ ] Mobile Application support (Multi-Plartform)
 
-- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
+- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**.
 
 
 
