@@ -190,6 +190,7 @@ https://github.com/afsec/cellular-js-example-app
 
 
 - [ ] Merge script into one executable (maybe Rust)
+- [ ] A type-system implementation
 
 
 
