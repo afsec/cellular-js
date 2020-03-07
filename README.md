@@ -184,11 +184,11 @@ https://github.com/afsec/cellular-js-example-app
 
 ## TODO
 
-- [X] Make an useful CRUD Example
+- [X] An useful CRUD Example
 
 - [ ] More documentation
 
-- [ ] Make a tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
+- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
 
 
 
