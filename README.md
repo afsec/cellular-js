@@ -186,13 +186,18 @@ https://github.com/afsec/cellular-js-example-app
 
 - [X] An useful CRUD Example
 
-- [ ] More documentation
+- [X] More documentation
+
+- [ ] Desktop Application support (Multi-Plartform)
+
+- [ ] Mobile Application support (Multi-Plartform)
 
 - [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**, or simply *"State (MVP powered)"*
 
 
 
 - [ ] Merge script into one executable (maybe Rust)
+
 
 
 ## Thanks to
