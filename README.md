@@ -1,7 +1,7 @@
 # Cellular JS
 
 
-A Javascript [micro-frontends](https://micro-frontends.org/) framework with States oriented MVP - Model View Presenter) implementation.
+A Javascript [micro-frontends](https://micro-frontends.org/) framework implementation of "UI Focused State Oriented Programming" grounded by MVP (Model View Presenter)
 
 ![Micro Frontend](https://micro-frontends.org/ressources/screen/three-teams.png)
 
