@@ -83,7 +83,7 @@ xdg-open ./tmp/callgraph.svg
 mv -v showpage ./src/js/states/
 ./build.sh
 ```
-CAUTION: Don't use the `state` in you state name.
+CAUTION: Don't use `state` in you state name.
 
 
 ### 2. Call your current state(ShowPage) from previous state(InitialState)
