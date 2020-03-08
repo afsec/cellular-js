@@ -6,7 +6,7 @@ A Javascript framework implementation of **UI Focused State Oriented Programming
 ![Single Page App states](/docs/00-states-example.png?raw=true)
 
 ## Features
-- Work beautifully with micro-frontends
+- Works beautifully with micro-frontends
 - Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
 - Powered by `Google Closure Compiler`
 - No `npm`,`yarn`, etc.
