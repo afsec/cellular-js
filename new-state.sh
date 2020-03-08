@@ -25,6 +25,7 @@ create_folders() {
 	printf "const state${1} = () => {\n" | tee ${FOLDER_NAME}/state.js
 	printf "    // DESC: ...\n" | tee -a ${FOLDER_NAME}/state.js
 	printf "    debug(\`state${1}()\`)\n" | tee -a ${FOLDER_NAME}/state.js
+   	printf '    const currentState = "%s"\n' ${1} | tee -a ${FOLDER_NAME}/state.js
 	printf "    state${1}Presenter()\n" | tee -a ${FOLDER_NAME}/state.js
 	printf "}\n\n" | tee -a ${FOLDER_NAME}/state.js
 
