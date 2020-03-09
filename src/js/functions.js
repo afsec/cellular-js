@@ -1,3 +1,5 @@
+// functions.js
+
 const debug = message => ((typeof (DEBUG) !== 'undefined') && (DEBUG === true)) ? (typeof (message) !== 'undefined') ? console.log(message) : false : false
 
 
