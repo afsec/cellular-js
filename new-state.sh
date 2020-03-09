@@ -31,23 +31,23 @@ create_folders() {
 
 	#$CMD touch ${FOLDER_NAME}/presenter.js
 	#printf "### ./${FOLDER_NAME}/presenter.js ###\n" | tee ${FOLDER_NAME}/state.js
-	printf "const state${1}Presenter = () => {\n" | tee ${FOLDER_NAME}/presenter.js
+	printf "const state${1}Presenter = async () => {\n" | tee ${FOLDER_NAME}/presenter.js
 	printf "    debug(\`state${1}Presenter()\`)\n" | tee -a ${FOLDER_NAME}/presenter.js
-	printf "    const model = state${1}Model()\n" | tee -a ${FOLDER_NAME}/presenter.js
-	printf "    const view = state${1}View(model)\n" | tee -a ${FOLDER_NAME}/presenter.js
+	printf "    const model = await state${1}Model()\n" | tee -a ${FOLDER_NAME}/presenter.js
+	printf "    const view = await state${1}View(model)\n" | tee -a ${FOLDER_NAME}/presenter.js
 	printf "    // AddEvenListener, innerHTML or Call Another State.\n" | tee -a ${FOLDER_NAME}/presenter.js
 	printf "}\n\n" | tee -a ${FOLDER_NAME}/presenter.js
 
 	#$CMD touch ${FOLDER_NAME}/model.js
 	#printf "### ./${FOLDER_NAME}/model.js ###\n" | tee ${FOLDER_NAME}/state.js
-	printf "const state${1}Model = () => {\n" | tee ${FOLDER_NAME}/model.js
+	printf "const state${1}Model = async () => {\n" | tee ${FOLDER_NAME}/model.js
 	printf "    debug(\`state${1}Model()\`)\n" | tee -a ${FOLDER_NAME}/model.js
 	printf "    return {}\n" | tee -a ${FOLDER_NAME}/model.js
 	printf "}\n\n" | tee -a ${FOLDER_NAME}/model.js
 
 	#$CMD touch ${FOLDER_NAME}/view.js
 	#printf "### ./${FOLDER_NAME}/view.js ###\n" | tee ${FOLDER_NAME}/state.js
-	printf "const state${1}View = (obj) => {\n" | tee ${FOLDER_NAME}/view.js
+	printf "const state${1}View = async (obj) => {\n" | tee ${FOLDER_NAME}/view.js
 	printf "    debug(\`state${1}View()\`)\n" | tee -a ${FOLDER_NAME}/view.js
 	printf "    return \`<span>\${obj}</span>\`\n" | tee -a ${FOLDER_NAME}/view.js
 	printf "}\n\n" | tee -a ${FOLDER_NAME}/view.js
