@@ -5,6 +5,10 @@ A Javascript framework implementation of **UI Focused State Oriented Programming
 
 ![Single Page App states](/docs/00-states-example.png?raw=true)
 
+## Sample WebApp
+
+https://github.com/afsec/cellular-js-example-app
+
 ## Features
 - Works beautifully with micro-frontends
 - Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
@@ -168,10 +172,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ---
 
-## Example App
 
-
-https://github.com/afsec/cellular-js-example-app
 
 
 
