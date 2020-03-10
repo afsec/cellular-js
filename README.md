@@ -3,11 +3,15 @@
 
 A Javascript framework implementation of **UI Focused State Oriented Architecture** grounded by MVP (Model View Presenter), with [micro-frontends](https://micro-frontends.org/) support.
 
-![Single Page App states](/docs/00-states-example.png?raw=true)
 
 ## Sample WebApp
-
 https://github.com/afsec/cellular-js-example-app
+
+
+## Visual concept
+![Single Page App states](/docs/00-states-example.png?raw=true)
+
+
 
 ## Features
 - Works beautifully with micro-frontends
