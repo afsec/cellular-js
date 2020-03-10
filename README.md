@@ -177,7 +177,9 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ---
 
+## How to Debug source code
 
+[![Debugging source code](https://img.youtube.com/vi/Chq3iwTgbJQ/0.jpg)](https://www.youtube.com/watch?v=Chq3iwTgbJQ)
 
 
 
