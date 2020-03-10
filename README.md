@@ -14,15 +14,16 @@ https://github.com/afsec/cellular-js-example-app
 
 
 ## Features
-- Works beautifully with micro-frontends
-- Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it!
-- Powered by `Google Closure Compiler`
-- No `npm`,`yarn`, etc.
-- No `node_modules` blackhole.
+- Works beautifully with **micro-frontends**;
+- Tiny artifacts ( Ex: [Sample WebApp](https://github.com/afsec/cellular-js-example-app) < 50Kb );
+- Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it;
+- Powered by `Google Closure Compiler`;
+- No `npm`,`yarn`, etc;
+- No `node_modules` blackhole;
 ![NPM blackhole](https://img.devrant.com/devrant/rant/r_760537_vKvzh.jpg)
-- *Low learning curve*.
-- *Beginners are doing well*.
-- Agile prototyping for experienced developers.
+- *Low learning curve*;
+- *Beginners are doing well*;
+- Agile prototyping for experienced developers;
 - A state can't be broken by another state execution. So, that means no segmentation faults. But, be cautious about usage footprint: CPU, Memory and DOM reentrance.
 
 
