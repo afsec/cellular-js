@@ -186,7 +186,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 - [ ] Mobile Application support (Multi-Plartform)
 
-- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Programming**.
+- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Architecture**.
 
 
 
