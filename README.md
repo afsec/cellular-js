@@ -15,7 +15,7 @@ https://github.com/afsec/cellular-js-example-app
 
 ## Features
 - Works beautifully with **micro-frontends**;
-- Tiny artifacts ( Ex: [Sample WebApp](https://github.com/afsec/cellular-js-example-app) < 50Kb );
+- Tiny artifacts ( Ex: [Sample WebApp](https://github.com/afsec/cellular-js-example-app) < `50KBytes` );
 - Now you can have a *Live Debug on a TV*, so you can track segfaults at real time (I know, it's useless. But, it's cool!). Try it;
 - Powered by `Google Closure Compiler`;
 - No `npm`,`yarn`, etc;
