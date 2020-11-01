@@ -214,7 +214,7 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 - [X] An useful CRUD Example
 - [X] More documentation
-- [X] *Actor-model* features: **Message Passing** and **Access Control List**
+- [X] *Actor model* features: **Message Passing** and **Access Control List**
 - [ ] Desktop Application support (Multi-Plartform)
 - [ ] Mobile Application support (Multi-Plartform)
 - [ ] Merge script into one executable (maybe Rust)
