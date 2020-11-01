@@ -126,9 +126,9 @@ CAUTION: Don't use `state` in you state name.
 
 #### Before
 ```js
-const stateInitialStatePresenter = () => {
+const stateInitialStatePresenter = (message) => {
     debug(`stateInitialStatePresenter()`)
-    const model = stateInitialStateModel()
+    const model = stateInitialStateModel(message)
     const view = stateInitialStateView(model)
     // AddEvenListener, innerHTML or Call Another State.
 }
@@ -137,12 +137,13 @@ const stateInitialStatePresenter = () => {
 
 #### After
 ```js
-const stateInitialStatePresenter = () => {
+const stateInitialStatePresenter = (message) => {
     debug(`stateInitialStatePresenter()`)
-    const model = stateInitialStateModel()
+    const model = stateInitialStateModel(message)
     const view = stateInitialStateView(model)
     // AddEvenListener, innerHTML or Call Another State.
-    stateShowPage()
+    const someData = "Some Data"
+    stateShowPage(currentState, someData)
 }
 ```
 
