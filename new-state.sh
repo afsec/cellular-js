@@ -32,9 +32,11 @@ create_folders() {
     printf '    ]\n\n' | tee -a ${FOLDER_NAME}/state.js
 	printf '    const isAllowedSender = (sender) => (AccessControlList.indexOf(sender) === -1) ? false : true\n' | tee -a ${FOLDER_NAME}/state.js
     printf '    const errorMessage = `CELLULAR_JS - ACL Error: ${sender} cannot send message to ${currentState}. Try insert "${sender}" into ${currentState} AccessControlList at "${currentState.toLowerCase()}/state.js"`\n' | tee -a ${FOLDER_NAME}/state.js
-    printf '    isAllowedSender(sender) ? ' | tee -a ${FOLDER_NAME}/state.js
-    printf "state${1}Presenter(message)" | tee -a ${FOLDER_NAME}/state.js
-    printf ' : console.error(errorMessage)\n' | tee -a ${FOLDER_NAME}/state.js
+    printf '    if(isAllowedSender(sender)) {\n' | tee -a ${FOLDER_NAME}/state.js
+    printf "        state${1}Presenter(message)" | tee -a ${FOLDER_NAME}/state.js
+    printf '    } else {\n' | tee -a ${FOLDER_NAME}/state.js
+    printf '        console.error(errorMessage)\n' | tee -a ${FOLDER_NAME}/state.js
+    printf '    }\n' | tee -a ${FOLDER_NAME}/state.js
     printf "}\n\n" | tee -a ${FOLDER_NAME}/state.js
 
     #$CMD touch ${FOLDER_NAME}/presenter.js
