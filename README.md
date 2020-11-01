@@ -46,10 +46,35 @@ git clone --depth=1 https://github.com/afsec/cellular-js
 cd cellular-js
 ```
 
-### Create the required (InitialState) and move to `./src/js/states/` folder.
+### Create the required (InitialState) and
 
 ```sh
 ./new-state.sh InitialState
+```
+
+#### Insert function caller name ("main" in this specific case) inside `initialstate/state.js` `AccessControlList` JS array.
+
+##### Before
+
+```js
+// ACL: Insert HERE all allowed senders.
+    const AccessControlList = [
+        ""
+    ]
+```
+
+##### After
+
+```js
+// ACL: Insert HERE all allowed senders.
+    const AccessControlList = [
+        "main"
+    ]
+```
+
+### Move state to `./src/js/states/` folder and build your project.
+
+```sh
 mv -v initialstate ./src/js/states/
 ./build.sh
 ```
@@ -188,17 +213,10 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 ## TODO
 
 - [X] An useful CRUD Example
-
 - [X] More documentation
-
+- [X] *Actor-model* features: **Message Passing** and **Access Control List**
 - [ ] Desktop Application support (Multi-Plartform)
-
 - [ ] Mobile Application support (Multi-Plartform)
-
-- [ ] A tutorial to show you some Proof of Concept about **UI focused State Oriented Architecture**.
-
-
-
 - [ ] Merge script into one executable (maybe Rust)
 - [ ] A type-system implementation
 

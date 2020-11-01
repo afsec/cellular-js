@@ -1,3 +1,3 @@
 // main.js
 
-stateInitialState()
+stateInitialState("main", null)
