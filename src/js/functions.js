@@ -1,7 +1,24 @@
 // functions.js
 
-const debug = message => ((typeof (DEBUG) !== 'undefined') && (DEBUG === true)) ? (typeof (message) !== 'undefined') ? console.log(message) : false : false
-
+const debug = (message, level = "INFO") => {
+    if ((typeof (DEBUG) !== 'undefined') && (DEBUG === true)) {
+        if (typeof (message) !== 'undefined') {
+            switch (level) {
+                case "INFO":
+                    console.log("CELLULAR_JS - INFO: ", message)
+                    break
+                case "WARN":
+                    console.warn("CELLULAR_JS - WARNING: ", message)
+                    break
+                case "ERROR":
+                    console.error("CELLULAR_JS - ERROR: ", message)
+                    break
+                default:
+                    console.error(`CELLULAR_JS - debug() function Error: debug(message,"${level}") "${level}" is invalid level. Try "INFO", "WARN" or "ERROR".`)
+            }
+        }
+    }
+}
 
 const waitForElement = (props, callBack) => {
     debug('waitForElement()')

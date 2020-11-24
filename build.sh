@@ -15,8 +15,8 @@ DIST_JS_DIR="${DIST_FRONT_DIR}/js"
 DEBUG_FILE="${TMP_DIR}/main-compiler.js"
 TO_DOT_FILE="${TMP_DIR}/main-debug.js"
 
-LANG_OUT="STABLE"
-#LANG_OUT="ECMASCRIPT_2018"
+#LANG_OUT="STABLE"
+LANG_OUT="ECMASCRIPT_2018"
 
 COMPILER="$HOME/bin/closure-compiler.jar"
 
@@ -136,12 +136,9 @@ copy_assets() {
     #cp ${SRC_DIR}/extlibs/* $DIST_FRONT_DIR/extlibs
     #cp ${SRC_DIR}/assets/img/* $DIST_FRONT_DIR/assets/img/
 
-    cp -v ${SRC_DIR}/favicon.ico $DIST_FRONT_DIR/favicon.ico
-    cp -v ${SRC_DIR}/css/uikit.min.css $DIST_FRONT_DIR/css/
+    cp -v ${SRC_DIR}/favicon.png $DIST_FRONT_DIR/favicon.png
     cp -v ${SRC_DIR}/css/style.css $DIST_FRONT_DIR/css/style.${BUILD}.css
 
-    cp -v ${SRC_DIR}/js/uikit.min.js $DIST_FRONT_DIR/js/
-    cp -v ${SRC_DIR}/js/uikit-icons.min.js $DIST_FRONT_DIR/js/
 
     cp -v ${TMP_DIR}/main-compiled.js $DIST_FRONT_DIR/js/main.${BUILD}.js
 }
