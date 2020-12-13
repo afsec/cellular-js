@@ -20,6 +20,10 @@ const debug = (message, level = "INFO") => {
     }
 }
 
+const info = message => debug(message, "INFO")
+const warning = message => debug(message, "WARN")
+const error = message => debug(message, "ERROR")
+
 const waitForElement = (props, callBack) => {
     debug('waitForElement()')
     debug(props)

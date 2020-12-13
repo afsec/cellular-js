@@ -1,7 +1,7 @@
 all: build
 
 version:
-	@echo "Cellular JS v0.7"
+	@echo "Cellular JS v0.8"
 
 build:
 	@./scripts/build.sh
