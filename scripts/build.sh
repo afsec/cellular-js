@@ -11,16 +11,14 @@ PROD_DIR="$PWD/prod"
 DIST_FRONT_DIR="${DIST_DIR}/htdocs/pages"
 DIST_JS_DIR="${DIST_FRONT_DIR}/js"
 
+DEBUG_FILE="${TMP_DIR}/main-debug.js"
+TO_DOT_FILE="${TMP_DIR}/main-to-dot.js"
 
-DEBUG_FILE="${TMP_DIR}/main-compiler.js"
-TO_DOT_FILE="${TMP_DIR}/main-debug.js"
+# LANG_OUT="STABLE"
 
-#LANG_OUT="STABLE"
 LANG_OUT="ECMASCRIPT_2018"
 
 COMPILER="$HOME/bin/closure-compiler.jar"
-
-LOGINJS_FILE="${SRC_DIR}/public_htdocs/login.js"
 
 
 [ X"$1" == X"-p" ] && DEBUG="FALSE" || DEBUG="TRUE"
@@ -62,6 +60,7 @@ merge_code() {
     cat ${SRC_DIR}/js/globals.js >>${DEBUG_FILE}
     printf "\n" >>${DEBUG_FILE}
 
+
     # States merging
     for path_file in $(find ${SRC_DIR}/js/states/ -name "state.js" | sort); do
         state_dir=$(echo $path_file | sed "s/\/state.js$//g")
@@ -78,8 +77,14 @@ merge_code() {
         printf "\n" >>${DEBUG_FILE}
         cat $view_file >>${DEBUG_FILE}
         printf "\n" >>${DEBUG_FILE}
-        awk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $state_file >>${DEBUG_FILE}
+        mawk 'BEGIN {after=0} /\/\/\ DESC:/{after=1}{ if (after){print}}' $state_file >>${DEBUG_FILE}
     done
+
+    # routes.js
+    cat ${SRC_DIR}/js/routes.js >>${DEBUG_FILE}
+    printf "\n" >>${DEBUG_FILE}
+
+    # main.js
     cat ${SRC_DIR}/js/main.js >>${DEBUG_FILE}
     printf "\n" >>${DEBUG_FILE}
 }
@@ -102,12 +107,11 @@ merge_to_dot() {
 compile() {
     printf "\tRunning $FUNCNAME...\n"
     time java -jar $COMPILER -O ADVANCED_OPTIMIZATIONS --js ${DEBUG_FILE} --js_output_file ${TMP_DIR}/main-compiled.js --language_in ECMASCRIPT_2018 --language_out $LANG_OUT
+    if [ $? -gt 0 ];then
+    exit 1
+    fi
 }
 
-compile_login() {
-    printf "\tRunning $FUNCNAME...\n"
-    time java -jar $COMPILER -O ADVANCED_OPTIMIZATIONS --js ${LOGINJS_FILE} --js_output_file ${TMP_DIR}/login.js --language_in ECMASCRIPT_2018 --language_out $LANG_OUT
-}
 
 fix_index() {
     printf "\tRunning $FUNCNAME...\n"
@@ -119,16 +123,13 @@ copy_assets() {
     printf "\tRunning $FUNCNAME...\n"
     # mkdir -p ${DIST_FRONT_DIR}/font
     mkdir -p ${DIST_FRONT_DIR}/css
+    mkdir -p ${DIST_FRONT_DIR}/api
     mkdir -p ${DIST_JS_DIR}
 
     #mkdir ${DIST_FRONT_DIR}/webfonts
     #mkdir ${DIST_FRONT_DIR}/extlibs
     #mkdir -p ${DIST_FRONT_DIR}/assets/img
 
-    #cp ${SRC_DIR}/css/normalize.css $DIST_FRONT_DIR/css/
-    #cp ${SRC_DIR}/css/fontawesome.css $DIST_FRONT_DIR/css/
-    #cp ${SRC_DIR}/css/m.css $DIST_FRONT_DIR/css/
-    #cp ${SRC_DIR}/css/l.css $DIST_FRONT_DIR/css/
     #cp ${SRC_DIR}/css/jodit.css $DIST_FRONT_DIR/css/
     #cp ${SRC_DIR}/css/print.css $DIST_FRONT_DIR/css/
     #cp ${SRC_DIR}/css/bootstrap.min.css $DIST_FRONT_DIR/css/
@@ -136,22 +137,26 @@ copy_assets() {
     #cp ${SRC_DIR}/extlibs/* $DIST_FRONT_DIR/extlibs
     #cp ${SRC_DIR}/assets/img/* $DIST_FRONT_DIR/assets/img/
 
-    cp -v ${SRC_DIR}/favicon.png $DIST_FRONT_DIR/favicon.png
     cp -v ${SRC_DIR}/css/style.css $DIST_FRONT_DIR/css/style.${BUILD}.css
 
-
-    cp -v ${TMP_DIR}/main-compiled.js $DIST_FRONT_DIR/js/main.${BUILD}.js
+    #cp -v ${SRC_DIR}/js/worker.js $DIST_FRONT_DIR/js/
+    # cp -v ${TMP_DIR}/worker.js $DIST_FRONT_DIR/js/worker.js
+    if [ X"$1" == X"-d" ]; then
+        cp -v ${TMP_DIR}/main-debug.js $DIST_FRONT_DIR/js/main.${BUILD}.js
+    else
+        cp -v ${TMP_DIR}/main-compiled.js $DIST_FRONT_DIR/js/main.${BUILD}.js
+    fi
 }
 
 copy_to_prod() {
     printf "\tRunning $FUNCNAME...\n"
-    rm -r ${PROD_DIR}
+    rm -rf ${PROD_DIR}
     cp -r ${DIST_FRONT_DIR}/ ${PROD_DIR}
 }
 
 generate_callgraph() {
     printf "\tRunning $FUNCNAME...\n"
-    ./generate_callgraph.awk ${TO_DOT_FILE} >>${TMP_DIR}/callgraph.dot
+    mawk -f ./scripts/generate_callgraph.awk ${TO_DOT_FILE} >>${TMP_DIR}/callgraph.dot
     dot ${TMP_DIR}/callgraph.dot -Tsvg -o ${TMP_DIR}/callgraph.svg
 }
 
@@ -162,16 +167,18 @@ run_server() {
 }
 
 main() {
+    #TODO: check_dependencies
     clean_dist
     merge_code
-    compile
+    if [ X"$1" != X"-d" ]; then
+        compile
+    fi
     fix_index
-    copy_assets
+    copy_assets $1
     copy_to_prod
     merge_to_dot
     generate_callgraph
-    # compile_login
     run_server
 }
 
-[ X"$1" == X"-h" ] && usage || main
+[ X"$1" == X"-h" ] && usage || main $1

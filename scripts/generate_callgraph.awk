@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/mawk -f
 
 BEGIN {
     inside_function = 0;

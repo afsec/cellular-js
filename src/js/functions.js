@@ -76,18 +76,41 @@ const getArrIdx = (arr, id) => {
                 if (idx > -1) {
                     return idx
                 } else {
-                    debug('getArrIdx(): ERROR -> Not Found')
+                    debug(`getArrIdx(): ERROR -> ID (${id}) not Found`)
+                    return false
                 }
             } else {
                 debug('getArrIdx(): ERROR -> Array empty')
+                return false
             }
         } else {
             debug('getArrIdx(): ERROR -> Type mismatch: id')
+            return false
         }
     } else {
         debug('getArrIdx(): ERROR -> Type mismatch: arr')
+        return false
     }
 }
 
 
 
+const routeFromUrl = () => {
+    if (window.location.href.indexOf('#') > -1) {
+        const routeDescriptor = window.location.href.split("#")[1]
+        if (routeDescriptor.indexOf("/") > -1) {
+            const routeFromUrl = "/" + routeDescriptor.split("/")[1]
+            return routeFromUrl
+        } else {
+            return "/"
+        }
+    } else {
+        return "/"
+    }
+}
+
+
+const pushUrl = (href) => {
+    history.pushState({}, '', href)
+    window.dispatchEvent(new Event('popstate'))
+}

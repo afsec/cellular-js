@@ -1,3 +1,4 @@
 // main.js
+window.addEventListener('popstate', stateDispatcher);
 
-stateInitialState("main", null)
+stateDispatcher()

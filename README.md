@@ -46,13 +46,19 @@ git clone --depth=1 https://github.com/afsec/cellular-js
 cd cellular-js
 ```
 
-### Create the required (InitialState) and
+## Create your own states
+
+### 1. Make your first state (`ShowPage`)
+
 
 ```sh
-./new-state.sh InitialState
+make state NAME="ShowPage"
+make
 ```
+**CAUTION:** Don't use word `state` in your state name.
 
-#### Insert function caller name ("main" in this specific case) inside `initialstate/state.js` `AccessControlList` JS array.
+
+#### 2. Insert default caller's name ("Home" in this specific case) inside `showpage/state.js` on `AccessControlList` JS array.
 
 ##### Before
 
@@ -68,68 +74,21 @@ cd cellular-js
 ```js
 // ACL: Insert HERE all allowed senders.
     const AccessControlList = [
-        "main"
+        "Home"
     ]
 ```
 
-### Move state to `./src/js/states/` folder and build your project.
 
-```sh
-mv -v initialstate ./src/js/states/
-./build.sh
-```
+### 3. Call your current state(ShowPage) from previous state(Home)
 
-### Check your project (http://localhost:8000) with `Developer Tools`
-
-![Browser with Developer Tools](/docs/05-browser-developer-tools.png?raw=true)
-
-
-### Check Your Debug artifacts at  `./tmp/` folder
-
-#### Callgraph (image)
-```sh
-xdg-open ./tmp/callgraph.svg
-```
-
-![Basic Callgraph](/docs/06-basic-callgraph.png?raw=true)
-
-
-#### Tree view
-```
-./tmp/
-├── callgraph.dot (Callgraph source code)
-├── callgraph.svg (Callgraph image)
-├── main-compiled.js (Artifact)
-├── main-compiler.js (Javascript merged to generate callgraph to be compiled)
-└── main-debug.js (Javascript merged to generate callgraph)
-```
-
-
----
-
-## Create your own project
-
-### 1. Make your first state (`ShowPage`)
-
-
-```sh
-./new-state.sh ShowPage
-mv -v showpage ./src/js/states/
-./build.sh
-```
-CAUTION: Don't use `state` in you state name.
-
-
-### 2. Call your current state(ShowPage) from previous state(InitialState)
-
-`vi ./src/js/states/initialstate/presenter.js`
+`vi ./src/js/states/home/presenter.js`
 
 #### Before
 ```js
-const stateInitialStatePresenter = (message) => {
-    debug(`stateInitialStatePresenter()`)
-    const model = stateInitialStateModel(message)
-    const view = stateInitialStateView(model)
+const stateHomePresenter = (message) => {
+    debug(`stateHomePresenter()`)
+    const model = stateHomeModel(message)
+    const view = stateHomeView(model)
     // AddEvenListener, innerHTML or Call Another State.
 }
 ```
@@ -137,22 +96,22 @@ const stateInitialStatePresenter = (message) => {
 
 #### After
 ```js
-const stateInitialStatePresenter = (message) => {
-    debug(`stateInitialStatePresenter()`)
-    const model = stateInitialStateModel(message)
-    const view = stateInitialStateView(model)
+const stateHomePresenter = (message) => {
+    debug(`stateHomePresenter()`)
+    const model = stateHomeModel(message)
+    const view = stateHomeView(model)
     // AddEvenListener, innerHTML or Call Another State.
     const someData = "Some Data"
     stateShowPage(currentState, someData)
 }
 ```
 
-#### 3. Check your project (http://localhost:8000) with `Developer Tools` again
+#### 4. Check your project (http://localhost:8000) with `Developer Tools` again
 
 ![Browser with Developer Tools 1s state](/docs/07-first-state.png?raw=true)
 
 
-#### 4. Check your Callgraph (image) again
+#### 5. Check your Callgraph (image) again
 ```
 xdg-open ./tmp/callgraph.svg
 ```
@@ -161,7 +120,7 @@ xdg-open ./tmp/callgraph.svg
 
 ### How to generate Production artifacts tree
 
-Use `./build.sh -p` for **production code** generation (no debug messages).
+Use `make release` for **production code** generation (no debug messages).
 
 
 ### Deploy
@@ -203,21 +162,27 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 
 ---
 
-## How to Debug source code
+## Aditional make commands
 
-### VIDEO: Click bellow to play
-[![Debugging source code](https://img.youtube.com/vi/Chq3iwTgbJQ/0.jpg)](https://www.youtube.com/watch?v=Chq3iwTgbJQ)
-
-
-
+- `make debug` to generate **debuging code**.
+- `make clean` to clean temporary files.
+- `make version` to show Cellular JS version.
 
 ## TODO
 
 - [X] An useful CRUD Example
 - [X] More documentation
 - [X] *Actor model* features: **Message Passing** and **Access Control List**
-- [ ] Desktop Application support (Multi-Plartform)
-- [ ] Mobile Application support (Multi-Plartform)
+- [X] Browser Extension support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
+- [X] Desktop Application support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
+- [X] Mobile Application support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
+- [X] `debug()` now supports log level ['INFO', 'WARNING' and 'ERROR']
+- [X] WaitForElement improvements
+- [X] React-like inspired `Routing System` (`routes.js`)
+- [X] Routing System 404 page (`states/404/`)
+- [X] Routing System History
+- [X] Group states using folders (`states/{some_folder}/{state_folder_A}, states/{some_folder}/{state_folder_B}`, `states/{another_folder}/state_folder_C`)
+
 - [ ] Merge script into one executable (maybe Rust)
 - [ ] A type-system implementation
 
@@ -231,3 +196,4 @@ Use `./build.sh -p` for **production code** generation (no debug messages).
 - Joe Armstrong talks
 - Robert "Uncle Bob" Martin talks
 - Google Closure Compiler
+- @JADSN (https://github.com/JADSN) for request and testing both features: `debug()` log level, and `Routing System`.
