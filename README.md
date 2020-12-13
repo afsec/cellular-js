@@ -176,19 +176,21 @@ Use `make release` for **production code** generation (no debug messages).
 - [X] Browser Extension support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
 - [X] Desktop Application support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
 - [X] Mobile Application support (Closure Compiler with `-O SIMPLE_OPTIMIZATIONS`)
+- [X] GNU Make build system implemented
 - [X] `debug()` now supports log level ['INFO', 'WARNING' and 'ERROR']
 - [X] WaitForElement improvements
 - [X] React-like inspired `Routing System` (`routes.js`)
-- [X] Routing System 404 page (`states/404/`)
-- [X] Routing System History
+- [X] `Routing System` 404 page (`states/404/`)
+- [X] `Routing System` History
+- [X] `Routing System` Core states (`states/core`)
+- [X] `Routing System` base template (`states/core/basetemplate/`)
 - [X] Group states using folders (`states/{some_folder}/{state_folder_A}, states/{some_folder}/{state_folder_B}`, `states/{another_folder}/state_folder_C`)
-
 - [ ] Merge script into one executable (maybe Rust)
 - [ ] A type-system implementation
 
 
 
-## Thanks to
+## Acknowledgements
 - Michael Geers(@naltatis) Micro Frontends (https://micro-frontends.org/)
 - Elm lang (Inspiration for Inter-State Communication)
 - Actor Model
@@ -196,4 +198,4 @@ Use `make release` for **production code** generation (no debug messages).
 - Joe Armstrong talks
 - Robert "Uncle Bob" Martin talks
 - Google Closure Compiler
-- @JADSN (https://github.com/JADSN) for request and testing both features: `debug()` log level, and `Routing System`.
+- @JADSN (https://github.com/JADSN) by request and test of several features, including: `debug()` log level, and `Routing System`.

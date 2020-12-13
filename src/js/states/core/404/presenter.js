@@ -3,6 +3,12 @@ const state404Presenter = async (message) => {
     const model = await state404Model(message)
     const view = await state404View(model)
     // AddEvenListener, innerHTML or Call Another State.
-    waitForElement({ "selector": "div#app" }, () => document.querySelector('div#app').innerHTML = view)
+    waitForElement({ "selector": "div#app" }, () => {
+        document.querySelector('div#app').innerHTML = view
+        setTimeout(() => {
+            window.history.back()
+        }, 3000)
+
+    })
 
 }
