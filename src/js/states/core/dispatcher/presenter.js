@@ -9,7 +9,7 @@ const stateDispatcherPresenter = async () => {
     if (model === false) {
         state404(currentState, { "route": `${route}` })
     } else {
-        stateBaseTemplate("main", null)
+        stateBaseTemplate(currentState, null)
         const handler = ROUTES[model]
         // history.pushState(model, currentState, `/#${model}`)
         handler(currentState, null)
