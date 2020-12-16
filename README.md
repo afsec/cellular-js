@@ -198,4 +198,4 @@ Use `make release` for **production code** generation (no debug messages).
 - Joe Armstrong talks
 - Robert "Uncle Bob" Martin talks
 - Google Closure Compiler
-- @JADSN (https://github.com/JADSN) by request and test of several features, including: `debug()` log level, and `Routing System`.
+- @JADSN (https://github.com/JADSN) for requesting and test of several features, including  `debug()` log level, and `Routing System`.
